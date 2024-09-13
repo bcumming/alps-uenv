@@ -198,21 +198,6 @@ uenvs:
       deploy:
         eiger: [zen2]
   prgenv-gnu:
-    "23.11":
-      recipes:
-        # zen2 and zen3 targets use the same recipe
-        zen2: 23.11/mc
-        zen3: 23.11/mc
-        a100: 23.11/a100
-      deploy:
-        # deploy to both the production and test clusters
-        eiger: [zen2]
-    "24.2":
-      recipes:
-        gh200: 24.2/gh200
-      deploy:
-        santis: [gh200]
-        todi: [gh200]
     "24.7":
       recipes:
         # zen2 and zen3 targets use the same recipe
@@ -222,6 +207,12 @@ uenvs:
       deploy:
         daint: [gh200]
         eiger: [zen2]
+        todi: [gh200]
+    "24.9":
+      recipes:
+        gh200: 24.7/gh200
+      deploy:
+        daint: [gh200]
         todi: [gh200]
   quantumespresso:
     "v7.1":

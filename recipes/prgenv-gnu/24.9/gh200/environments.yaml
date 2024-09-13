@@ -3,7 +3,7 @@ gcc-env:
       - toolchain: gcc
         spec: gcc
   mpi:
-      spec: cray-mpich@8.1.29
+      spec: cray-mpich@8.1.30
       gpu: cuda
   unify: true
   specs:
@@ -12,15 +12,16 @@ gcc-env:
   - cuda@12.4
   - fftw
   - fmt
-  - hdf5
+  - hdf5+hl
   - libtree
   - meson
   - nccl
   - nccl-tests
+  - nvshmem +mpi +ofi ~ucx
   - ninja
   - openblas threads=openmp
   - osu-micro-benchmarks@5.9
-  - python@3.11
+  - python@3.12
   variants:
   - +mpi
   - +cuda
@@ -28,3 +29,6 @@ gcc-env:
   views:
     default:
       link: roots
+      uenv:
+        prefix_paths:
+          LD_LIBRARY_PATH: [lib, lib64]
