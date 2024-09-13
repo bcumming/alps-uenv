@@ -17,11 +17,12 @@ gcc-env:
   - meson
   - nccl
   - nccl-tests
-  - nvshmem +mpi +ofi ~ucx
+  - nvshmem +nccl+mpi+ofi ~ucx~gdrcopy
   - ninja
   - openblas threads=openmp
   - osu-micro-benchmarks@5.9
   - python@3.12
+  - sqlite
   variants:
   - +mpi
   - +cuda
