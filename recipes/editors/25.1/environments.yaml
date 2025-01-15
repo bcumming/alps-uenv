@@ -1,0 +1,49 @@
+editors:
+  compiler:
+      - toolchain: gcc
+        spec: gcc
+  unify: false
+  mpi: null
+  specs:
+  # the editors
+  - emacs +treesitter
+  - nano
+  #- vim +python +lua
+  - neovim
+  # additional tools that integrate well with tools
+  - direnv
+  - go
+  - fd
+  - lazygit
+  # llvm provides clangd for lsp
+  # but it is 12GB, so we look for other ways to install it
+  #- llvm
+  - lua
+  - node-js
+  # python 3.12 was breaking the build of vim
+  - python@3.11
+  - ripgrep
+  - screen
+  #- rust
+  - tree-sitter
+  # handy build tools
+  - meson
+  - cmake
+  - ninja
+  packages:
+  # libvterm does not build with libtool pulled from a build cache
+  - libtool
+  - curl
+  - gmake
+  - perl
+  - git
+  # go requires these, which seems a bit excessive
+  - grep
+  - bash
+  - sed
+  views:
+    ed:
+      link: roots
+      uenv:
+        prefix_paths:
+          LD_LIBRARY_PATH: [lib, lib64]
