@@ -26,9 +26,18 @@ export JUHPC_ADIOS2_HOME=$(spack -C $ENV_MOUNT/config location -i adios2)
 
 # Call JUHPC
 JUHPC_SETUP_INSTALLDIR=$ENV_MOUNT/juhpc_setup
-#JULIAUP_INSTALLDIR="\$SCRATCH/\${HOSTNAME%%-*}/juliaup"
-JULIAUP_INSTALLDIR="\$SCRATCH/gh200/juliaup"
+JULIAUP_INSTALLDIR="\$SCRATCH/\${HOSTNAME%%-*}/juliaup"
 JUHPC_POST_INSTALL_JL=$ENV_EXTRA/uenv_view.jl
 VERSION="v0.2.0"
 wget https://raw.githubusercontent.com/JuliaParallel/JUHPC/$VERSION/juhpc -O /tmp/juhpc
 bash -l /tmp/juhpc $JUHPC_SETUP_INSTALLDIR $JULIAUP_INSTALLDIR $JUHPC_POST_INSTALL_JL
+
+setup_path={{ env.mount }}/juliaup
+
+cat > $setup_path << EOF
+# Call JUHPC
+export JUHPC_SETUP_INSTALLDIR=$ENV_MOUNT/juhpc_setup
+export JULIAUP_INSTALLDIR="\$SCRATCH/gh200/juliaup"
+export JUHPC_POST_INSTALL_JL=$ENV_EXTRA/uenv_view.jl
+EOF
+check_env("JULIAUP_WRAPPER_BINDIR", "JULIAUP_BINDIR", "JULIAUP_DEPOT", "JULIA_DEPOT", "JULIA_PREFDIR", "JULIAUP_INSTALLDIR", "ENV_JSON")
