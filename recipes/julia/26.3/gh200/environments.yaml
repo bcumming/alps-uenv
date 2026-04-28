@@ -1,9 +1,7 @@
 gcc-env:
   compiler: [gcc]
   network:
-      mpi: cray-mpich@8.1.32 +cuda
-      specs:
-      - libfabric@2.3 +gdrcopy
+      mpi: cray-mpich@9.1 +cuda
   unify: true
   specs:
   - cmake@3.27 # required for adios2 build
@@ -12,11 +10,9 @@ gcc-env:
   - hdf5+hl
   - libtree
   - meson
-  - nccl
-  - nccl-tests
   - ninja
   - openblas threads=openmp
-  - osu-micro-benchmarks@5.9
+  - osu-micro-benchmarks
   - papi
   - python
   - bzip2
@@ -28,10 +24,13 @@ gcc-env:
   - mgard
   - libcatalyst
   - 'adios2@2.10+hdf5+python+fortran+sst+pic+shared+bzip2+zfp+sz+png+blosc2+mgard+libcatalyst'
-  - cuda@12.9
-  - cutensor
+  # add GPU-specific packages here, for easier comparison with mc version
+  - nccl
+  - nccl-tests
+  - cuda
   - xcb-util-cursor
   - aws-ofi-nccl
+  - cutensor
   variants:
   - +mpi
   - +cuda

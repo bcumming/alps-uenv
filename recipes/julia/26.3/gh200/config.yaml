@@ -5,7 +5,8 @@ spack:
   packages:
     repo: https://github.com/spack/spack-packages.git
     #commit: d434948b26119179058e2cb2749b32b36eb4247b # develop on 2025-10-29
-    commit: b6f5782e116d6c7946445b4d10fca962540a0eb3 # include fix for libxci
+    # commit: b6f5782e116d6c7946445b4d10fca962540a0eb3 # include fix for libxci
+    commit: 107d3dbda28f475b2f0f241a407fc92787d821c7 # develop on 2026-03-12
 store: /user-environment
 description: HPC setup for Juliaup, Julia and some HPC key packages (MPI.jl, CUDA.jl, AMDGPU.jl, Reactant.jl, HDF5.jl, ADIOS2.jl, ...) + GNU Compiler toolchain with cray-mpich, NCCL, HDF5, ADIOS2, Python, CMake and other development tools.
 version: 2
